@@ -46,7 +46,7 @@ const frontEndDev = [
 // - 조건이 맞을 경우, 순환 중단(break)
 // - 조건: JavaScript 까지만 출력하세요.
 
-/* 
+
 for(
   let i = 0 ,
       l = frontEndDev.length; 
@@ -56,15 +56,18 @@ for(
   let value = frontEndDev[i];
   
 
-  if(value.toLowerCase().includes('jquery')){
+  
+  
+  if(value.toLowerCase().includes('jquery '.trim())){
     break;
   }
 
+  
 
   console.log(frontEndDev[i]);
 }
 
- */
+
 // - 성능 향상에 도움이 되는 팁
 
 
@@ -78,11 +81,11 @@ for(let i = frontEndDev.length-1; zero < i; i--){
  */
 
 
-for(let i = frontEndDev.length, 
-        subject;
-   (subject = frontEndDev[--i]);){
-  console.log(subject);
-}
+// for(let i = frontEndDev.length, 
+//         subject;
+//    (subject = frontEndDev[--i]);){
+//   console.log(subject);
+// }
 
 
 

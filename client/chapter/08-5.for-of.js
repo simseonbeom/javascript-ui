@@ -29,7 +29,6 @@ const languages = [
   },
 ];
 
-
 // 유사 배열 객체
 // 배열과 같은 특징을 보이는 객체 -> 배열의 특징은 무엇일까요?
 // - 순환이 가능하다
@@ -41,17 +40,15 @@ const arrayLike = {
   1: document.head,
   2: document.documentElement,
   langth: 3,
-}
-
+};
 
 // 배열 뿐만 아니라, 문자 값도 for...of 문을 사용할 수 있을까요?
 
 const hello = '안녕하세요';
 
-for(const key of hello){
+for (const key of hello) {
   // console.log(key);
 }
-
 
 // for ~ of 문
 // - 특정 조건에서 건너띄기
@@ -73,28 +70,17 @@ for(const key of hello){
 }
  */
 
-
-
-
-
 // - 특정 조건에서 중단하기
 //   C#에서 중단 (C# 언어는 출력 ✕)
-for(const key of languages){
-
+for (const key of languages) {
   let name = key.name.toLowerCase();
 
-  
-  if(name.includes('c#')){
+  if (name.includes('c#')) {
     break;
   }
 
-
   // console.table(key);
-  
-
 }
-
-
 
 const randomUser = {
   gender: 'female',
@@ -106,7 +92,10 @@ const randomUser = {
     country: 'United Kingdom',
     postcode: 'FO5E 4TN',
     coordinates: { latitude: '-4.3301', longitude: '155.0223' },
-    timezone: { offset: '-4:00', description: 'Atlantic Time (Canada), Caracas, La Paz' },
+    timezone: {
+      offset: '-4:00',
+      description: 'Atlantic Time (Canada), Caracas, La Paz',
+    },
   },
   email: 'carol.may@example.com',
   login: {
@@ -157,36 +146,27 @@ for(const key in randomUser){
 }
  */
 
-
 // 객체의 키, 값 순환
 // - for ~ in 문
 // - for ~ of 문
 // - 성능 비교 진단
 
-
-for(const keyValue of  Object.entries(randomUser)){
+for (const keyValue of Object.entries(randomUser)) {
   let key = keyValue[0];
   let value = keyValue[1];
-  
-  if(Object.prototype.hasOwnProperty.call(randomUser,key)){
-    console.log('L1 : ' + key);
-     if(typeof value === 'object'){
-
-      
-      for(const keyValue of  Object.entries(value)){
-        let key = keyValue[0];
-        let value = keyValue[1];
-      
-        
-        
-        if(Object.prototype.hasOwnProperty.call(keyValue,key)){
-          console.log(key);
+  console.log('L1 : ' + key);
+  if (typeof value === 'object') {
+    for (const keyValue of Object.entries(value)) {
+      let key = keyValue[0];
+      let value = keyValue[1];
+      console.log('\tL2 : ' + key);
+      if (typeof value === 'object') {
+        for (const keyValue of Object.entries(value)) {
+          let key = keyValue[0];
+          let value = keyValue[1];
+          console.log('\t\tL3 : ' + key);
         }
-        // console.log(typeof value === 'object');
-      
       }
-     }
+    }
   }
-
 }
-
