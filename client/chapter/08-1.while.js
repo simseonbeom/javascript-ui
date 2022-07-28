@@ -203,6 +203,8 @@ while(copyArray.length){
   console.log(copyArray.pop()); // 역방향
 }
 
+unshift , push 
+
  */
 
 // 성능 진단 : 순환 vs. 역순환

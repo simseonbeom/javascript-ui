@@ -21,7 +21,7 @@ const frontEndDev = [
 // ✅ - 순환 중단
 
 
-let repeat = prompt('횟수')
+// let repeat = prompt('횟수')
 
 /* do{
 
@@ -38,7 +38,7 @@ let repeat = prompt('횟수')
 
 // do ~ while 문 (순환)
 
-
+/* 
 let i = 0;
 
 do{
@@ -60,7 +60,7 @@ console.log(i);
 }while(i < repeat)
 
 
-
+ */
 
 
 // - 위 do ~ while 문을 순방향으로 순환되도록 설정
@@ -71,6 +71,22 @@ console.log(i);
 
 // 구현할 로직(logic)
 // 선택한 요소의 다음 요소를 찾는 로직 구현 
+
+// const ELEMENT_NODE = 1;
+// const ATTRIBUTE_NODE = 2;
+// const TEXT_NODE = 3;
+// const COMMENT_NODE = 8;
+
+// const first = document.querySelector('.first');
+// const box01 = document.querySelector('.box01');
+
+
+// let next = first;
+
+// do{
+//   next = next.nextSibling;
+// }while(next.nodeType !== document.ELEMENT_NODE);
+
 
 
 
@@ -83,9 +99,29 @@ console.log(i);
 // 반복 종료 조건: 그 형제 노드의 타입이 1(document.ELEMENT_NODE)이면 순환 종료
 
 
-// 미션
+// 미션 
 
 // 1. next 함수 로직을 만들어보세요 
 
+// next(first) => 다음 노드가 선택되기를 기대 
+
+function next(node){
+
+  if(typeof node === 'string'){
+    node = document.querySelector(node);
+  }
+  
+  do{
+    node = node.nextSibling;
+  }while(node.nodeType !== document.ELEMENT_NODE);
+
+  return node
+}
+
+console.log(next('.first'));
+
+
 
 // 2. next 함수 로직을 참고하여 prev 함수를 작성해봅니다.
+
+
