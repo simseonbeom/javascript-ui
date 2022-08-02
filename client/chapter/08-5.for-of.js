@@ -40,6 +40,7 @@ const arrayLike = {
   1: document.head,
   2: document.documentElement,
   langth: 3,
+  // [Symbol.iterator]: ...
 };
 
 // 배열 뿐만 아니라, 문자 값도 for...of 문을 사용할 수 있을까요?
@@ -150,7 +151,7 @@ for(const key in randomUser){
 // - for ~ in 문
 // - for ~ of 문
 // - 성능 비교 진단
-
+/* 
 for (const keyValue of Object.entries(randomUser)) {
   let key = keyValue[0];
   let value = keyValue[1];
@@ -170,3 +171,4 @@ for (const keyValue of Object.entries(randomUser)) {
     }
   }
 }
+ */
