@@ -133,6 +133,8 @@ function getStyle(node, prop){
   return getComputedStyle(node).getPropertyValue(prop)
 }
 
+// console.log(getStyle('h1','color'));
+
 // ✅ node의 값을 'h1'으로 받았을 경우
 
 // ✅ node가 없거나 document.ELEMENT_NODE가 아닐 경우
@@ -183,7 +185,7 @@ function setStyle(node,prop,value){
 
 }
 
-setStyle('h1','font-size',100) ;
+// setStyle('h1','font-size',100) ;
 
 // document.body.style.setProperty('font-size',30);
 
@@ -207,24 +209,86 @@ setStyle('h1','font-size',100) ;
 
 
 
+function css(node,prop,value){
+  
+  // if(!value){
+  //   getStyle(node,prop)
+  // }else{
+  //   setStyle(node,prop,value)
+  // }
+
+
+  // 조건 ? 참 : 거짓
+
+  // return !value ? console.log('get') : console.log('set')
+  return !value ? getStyle(node,prop) : setStyle(node,prop,value)
 
 
 
-
-
-
-
-
-
-
-
+  
+}
 
 
 // value의 값이 number가 아닌 경우
 
+
+
+
+
+
+
+
+
+
+
+
+
 // 클릭 이벤트를 이용한 h1의 폰트 크기를 증가시키는 함수와 감소시키는 함수 만들기
 
 // 1. h1,plus,minus 요소를 변수로 지정한다.
+const h1 = document.querySelector('h1');
+const plus = document.querySelector('.plus');
+const minus = document.querySelector('.minus');
+
+
 // 2. h1의 폰트 사이즈를 가져온다.
+let h1FontSize = parseInt(css(h1,'font-size'));
+
+
+console.log(h1FontSize);
+
+let count = 0;
+
+function incre(){
+  
+  console.log(count);
+  // setStyle(h1,'font-size',h1FontSize + count++);
+  h1.style.fontSize = `${h1FontSize + (++count)}px`;
+
+}
+
+
+
+
+function decre(){
+
+  console.log(count);
+  h1.style.fontSize = `${h1FontSize + (--count)}px`;
+}
+
+
+
+
+
+
 // 3. 증가함수와 감소함수를 만든다.
-// 4. 클릭 이벤트와 바인딩한다.
+
+
+// 4. 클릭이벤트에 바인딩
+
+
+
+plus.addEventListener('click',incre)
+minus.addEventListener('click',decre)
+
+
