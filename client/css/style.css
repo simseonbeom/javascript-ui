@@ -1,0 +1,58 @@
+
+
+.hamburger{
+  position: fixed;
+  right: 30px;
+  top: 30px;
+  z-index: 100;
+  
+}
+
+.menu{
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  /* right: -100vw; */
+  right: 0;
+  top: 0;
+  background: orange;
+  z-index: 10;
+  transition: all .5s;
+  display: none;
+}
+
+.menu.active{
+  animation:menu 1s 1 forwards
+}
+
+@keyframes menu{
+  0%{
+    transform: translateX(0)
+  }
+  30%{
+    transform: translateX(-100%)
+  }
+  80%{
+    transform: translateX(-100%)
+  }
+  100%{
+    transform: translateX(-200%)
+  }
+}
+
+
+span{
+  display: inline-block;
+  background: red;
+  
+  /* transform: translateY(30px); */
+  /* opacity: 0; */
+}
+
+span.active{
+  transform: translateY(0);
+  opacity: 1;
+}
+
+
+

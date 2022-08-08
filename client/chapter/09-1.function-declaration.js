@@ -243,6 +243,8 @@ function css(node,prop,value){
 
 
 
+
+
 // 클릭 이벤트를 이용한 h1의 폰트 크기를 증가시키는 함수와 감소시키는 함수 만들기
 
 // 1. h1,plus,minus 요소를 변수로 지정한다.
@@ -251,11 +253,15 @@ const plus = document.querySelector('.plus');
 const minus = document.querySelector('.minus');
 
 
-// 2. h1의 폰트 사이즈를 가져온다.
-let h1FontSize = parseInt(css(h1,'font-size'));
 
+// 2. h1의 폰트 사이즈를 가져온다.
+// let h1FontSize = parseInt(css(h1,'font-size'));
+
+let h1FontSize = getComputedStyle(h1)['font-size'];
 
 console.log(h1FontSize);
+
+// console.log(h1FontSize);
 
 let count = 0;
 
