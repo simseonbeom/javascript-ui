@@ -32,7 +32,8 @@ function showJujeobText(nickName) {
     jujeobList(nickName)[randomValue()];
 }
 
-function jujeobFunc() {
+function jujeobFunc(e) {
+
   showJujeobText(getName());
 }
 

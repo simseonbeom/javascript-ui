@@ -96,9 +96,10 @@ function pow(x, n) {
 
   return result;
 }
-const powExpression = (x,n)=> Array(n).fill().reduce(acc => x * acc,1)
-
-
+const powExpression = (x, n) =>
+  Array(n)
+    .fill()
+    .reduce((acc) => x * acc, 1);
 
 // const powExpression = (numeric, powCount) =>
 //   Array(powCount)
@@ -121,20 +122,19 @@ let repeat = (text, repeatCount) => {
   return result;
 };
 
-let repeatExpression = (text,repeatCount) => {
-   return Array(repeatCount).fill(null).reduce((acc)=>{
-      return acc + text
-   },'')
-}
-
-
+let repeatExpression = (text, repeatCount) => {
+  return Array(repeatCount)
+    .fill(null)
+    .reduce((acc) => {
+      return acc + text;
+    }, '');
+};
 
 const beom = {
   a() {
     console.log(this);
     // let self = this;
-    const b =  () => {
-      
+    const b = () => {
       console.log(this);
     };
 
@@ -151,7 +151,7 @@ const obj = {
 
     let self = this;
 
-    this.grades.forEach( function (i) {
+    this.grades.forEach(function (i) {
       self.total += i;
     });
   },
@@ -164,16 +164,14 @@ function sum(...arg) {
   return arg.reduce((acc, current) => acc + current);
 }
 
-// console.log(sum.call({},1,2,3));
-
+// console.log(sum.call({}, 1, 2, 3));
 
 const sum2 = (...arg) => {
   console.log(this);
-  return arg.reduce((acc, current) => acc + current,1);
+  return arg.reduce((acc, current) => acc + current, 1);
 };
 
-// console.log(sum2.call({},1,2,3));
-
+console.log(sum2.call({}, 1, 2, 3));
 
 // console.log(repeat('hello🥲', 3));
 
@@ -186,8 +184,8 @@ const sum2 = (...arg) => {
 //  1 ~ 6까지의 랜덤수를 만든다. -> 어떤 함수를 실행 1 ~ 6까지의 랜덤수
 
 // 주사위를 굴립니다.
-function rollingDice(max = 6){
-  return Math.floor(Math.random() * max + 1)
+function rollingDice(max = 6) {
+  return Math.floor(Math.random() * max + 1);
 }
 /* 
 
@@ -207,33 +205,36 @@ const isOdd = (value)=>{
  */
 
 // 굴려서 나온 주사위의 값이 홀수인지 짝수인지를 구분하는 함수를 작성해주세요.
-const isOdd = value => value % 2 !== 0;
+const isOdd = (value) => value % 2 !== 0;
 
-const isEven = value => !isOdd(value);
+const isEven = (value) => !isOdd(value);
 
 // 주사위의 값이 홀/짝 인지 확인합니다.
 
 let value = rollingDice();
 
-
-function throwError(message){
-   throw new Error(message);
+function throwError(message) {
+  throw new Error(message);
 }
-
 
 // isOdd(value) ? console.log('홀수입니다') : throwError(`입력받은 ${value} 값은 짝수입니다.`);
 
-
-const penalty = value =>{
+const penalty = (value) => {
   switch (value) {
-    case 1: return '안주 한입';
-    case 2: return '왼쪽 사람과 원샷';
-    case 3: return '전국 노래자랑';
-    case 4: return '폭탄주 원샷';
-    case 5: return '물 한잔 원샷';
-    case 6: return '주사위 한번 더 !';
+    case 1:
+      return '안주 한입';
+    case 2:
+      return '왼쪽 사람과 원샷';
+    case 3:
+      return '전국 노래자랑';
+    case 4:
+      return '폭탄주 원샷';
+    case 5:
+      return '물 한잔 원샷';
+    case 6:
+      return '주사위 한번 더 !';
   }
-}
+};
 
 console.log(penalty(value));
 
@@ -249,31 +250,10 @@ console.log(penalty(value));
 
 */
 
-
-
 // 주사위의 값이 홀수라면?
 // console패널에 주사위의 값이 '홀수' 임을 출력해주세요.
-
-
-
 
 // 그렇지 않다면? (짝수라면)
 // console패널에 주사위가 '홀수'가 아님 에러를 표시 합니다
 
 /* 다음 함수를 작성해봅니다. -------------------------------------------------- */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

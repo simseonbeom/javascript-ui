@@ -6,9 +6,10 @@
 // 5. 주접 함수 만들기
 
 // 이름을 입력하지 않았을 경우 예외처리
-// 팝업창을 띄워보자!
+// - 값이 없을 경우 
+// - 빈칸이 있을 경우 
 
-const arr = [1, 2, 3, 4, 5];
+// 팝업창을 띄워보자!
 
 function jujeobList(nickName) {
   return [
@@ -20,6 +21,78 @@ function jujeobList(nickName) {
   ];
 }
 
-function random(max = jujeobList().length) {
+function random(max = 6) {
   return Math.floor(Math.random() * max);
 }
+
+function getNameValue(node){  
+ return $.getNode(node).value
+}
+
+function randerList(node,text){
+  $.getNode(node).textContent = text;
+}
+
+const animation = Object.freeze({
+
+  showPop (){
+    
+    let showPop = gsap.timeline({paused:true});
+    showPop.to('.pop',{opacity:1,duration:1});
+    showPop.to('.pop .frame',{opacity:1,duration:0.5,ease:'power3.inOut'},'0.3');
+
+    return showPop;
+  },
+
+  hidePop (){
+    let hidePop = gsap.timeline({paused:true});
+    hidePop.to('.pop',{duration:1,opacity:0,onComplete:()=>{
+      gsap.set('.pop .frame',{opacity:0})
+      $.hide('.pop');
+    }})
+
+    return hidePop;
+  }
+
+
+})
+
+function jujeobGenerator(e){
+
+ 
+  e.preventDefault();
+ 
+  let name = getNameValue('#nameInput').trim();
+  let jujeob = jujeobList(name)[random(jujeobList().length)];
+
+  if(!name){
+    
+    $.getNode('.pop span').textContent = '이름을 입력해주세요 !'
+    $.getNode('#nameInput').value = '';
+    $.show('.pop');
+    animation.showPop().restart();
+    return;
+  }
+
+
+  if(name.length >= 5){
+    
+    $.getNode('.pop span').textContent = '이름 맞아?!'
+    $.getNode('#nameInput').value = '';
+    $.show('.pop');
+    animation.showPop().restart();
+    return;
+  }
+
+  randerList('#jujeobArea',jujeob);
+}
+
+function cancelPop(){
+  animation.hidePop().restart();
+}
+
+$.getNode('.btn')?.addEventListener('click',jujeobGenerator);
+$.getNode('.close')?.addEventListener('click',cancelPop);
+
+
+

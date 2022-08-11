@@ -56,3 +56,44 @@ span.active{
 
 
 
+.pop{
+  width:100vw;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background: rgba(0, 0, 0, 0.471);
+  z-index: 1000;
+  display: none;
+  opacity: 0;
+}
+
+.pop .frame{
+  width: 50vw;
+  height: 30vw;
+  background: white;
+  border-radius: 10px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  
+}
+
+.pop .frame span{
+  font-size: 2rem;
+  background: none;
+}
+
+
+.pop .close{
+  font-size: 2rem;
+  position: absolute;
+  right:-32px;
+  top:-32px;
+  cursor:pointer;
+}
