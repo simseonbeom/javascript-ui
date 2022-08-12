@@ -6,9 +6,22 @@
 // 5. 주접 함수 만들기
 
 // 이름을 입력하지 않았을 경우 예외처리
+// - 값이 없을 경우
+// - 빈칸이 있을 경우
+// - 숫자 입력 시 
+
 // 팝업창을 띄워보자!
 
-const arr = [1, 2, 3, 4, 5];
+// 1. 뭘 하는 함수인지 함수의 이름을 정한다 (동사) randerText
+// 2. 함수가 어떤 매개변수를 받을지 정한다.
+// randerText(node,text)  => 특정 node에 text 글자가 들어가길 
+// 3. 함수의 로직을 구현한다.
+// 4. 재사용 가능한 함수가 될 수 있는 방법을 생각한다.
+// 5. 함수를 리펙토링 한다.
+// 6. 함수가 실행됐을 때 원하는 기댓값이 나오는지 확인한다.
+
+
+
 
 function jujeobList(nickName) {
   return [
@@ -20,6 +33,102 @@ function jujeobList(nickName) {
   ];
 }
 
-function random(max = jujeobList().length) {
+function random(max = 6) {
   return Math.floor(Math.random() * max);
 }
+
+
+function getInputValue(node){
+  return $.getNode(node).value
+}
+
+
+function randerText(node,text){
+  $.getNode(node).textContent = text;
+}
+
+
+
+
+function jujeobGenerator(e){
+
+  e.preventDefault();
+
+  
+
+  let name = getInputValue('#nameValue').trim();
+  let jujeob = jujeobList(name)[random(jujeobList().length)]
+
+
+
+  if(!name){
+    // alert('이름을 입력후 확인버튼을 눌러주세요.');
+    // $.show('.pop');
+    // $.addClass('.pop','active');
+    $.fadeIn('.pop');
+    randerText('.notice','정확한 이름을 입력해 주세요.');
+    return;
+  }
+
+
+
+
+  if(name.length >= 5){
+    $.getNode('#nameValue').value = '';
+    // $.show('.pop');
+    // $.addClass('.pop','active');
+    $.fadeIn('.pop');
+    randerText('.notice','5글자 이하의 이름을 넣어주세요.');
+    return;
+  }
+
+
+  randerText('.jujeobField',jujeob)
+}
+
+
+
+
+$.getNode('.button').addEventListener('click',jujeobGenerator);
+$.getNode('.close').addEventListener('click',function(e){
+
+  // $.hide('.pop');
+  // $.removeClass('.pop','active');
+    $.fadeOut('.pop');
+  
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -43,7 +43,7 @@
 
 span{
   display: inline-block;
-  background: red;
+  /* background: red; */
   
   /* transform: translateY(30px); */
   /* opacity: 0; */
@@ -56,3 +56,99 @@ span.active{
 
 
 
+
+
+.pop{
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.503);
+  display: none;
+  opacity: 0;
+  transition: all .5s;
+
+
+}
+
+
+
+.frame{
+  width: 30vw;
+  height: 20vw;
+  background: #fff;
+  border-radius: 10px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform:translate(-50%,-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.frame .close{
+  font-size:2rem;
+  position: absolute;
+  /* right: 0; */
+  /* top: 0; */
+  right: -2rem;
+  top: -2rem;
+}
+
+/* 
+.pop{
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.503);
+
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+.pop.active{
+
+  visibility: initial;
+  opacity: 1;
+  
+}
+
+
+.pop.active .frame{
+  opacity: 1;
+  margin-top:0;
+  transition: all 1s 0.3s;
+}
+
+.frame{
+  width: 30vw;
+  height: 20vw;
+  background: #fff;
+  border-radius: 10px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform:translate(-50%,-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  margin-top:30px;
+  transition: all 1s;
+}
+
+.frame .close{
+  font-size:2rem;
+  position: absolute;
+
+  right: -2rem;
+  top: -2rem;
+} */
