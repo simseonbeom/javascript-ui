@@ -51,3 +51,6 @@ function attr(node, attributeName){
 
 
 console.log(h1.setAttribute('class','foo'));
+
+
+
