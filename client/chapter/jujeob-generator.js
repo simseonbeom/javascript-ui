@@ -48,6 +48,32 @@ function randerText(node,text){
 }
 
 
+const animation = Object.freeze({
+
+  showPop(){
+    const showPop = gsap.timeline({paused:true});
+    showPop.to('.pop',{autoAlpha:1})
+    showPop.to('.frame',{scale:1,opacity:1,ease:'bounce'})
+
+    return showPop
+  },
+  hidePop(){
+    const hidePop = gsap.timeline({paused:true});
+    hidePop.to('.frame',{scale:0,opacity:0})
+    hidePop.to('.pop',{autoAlpha:0})
+    return hidePop
+  }
+  
+})
+
+
+
+
+
+
+
+    
+
 
 
 function jujeobGenerator(e){
@@ -65,7 +91,11 @@ function jujeobGenerator(e){
     // alert('이름을 입력후 확인버튼을 눌러주세요.');
     // $.show('.pop');
     // $.addClass('.pop','active');
-    $.fadeIn('.pop');
+    // $.fadeIn('.pop');
+
+    animation.showPop().restart();
+    
+
     randerText('.notice','정확한 이름을 입력해 주세요.');
     return;
   }
@@ -77,7 +107,8 @@ function jujeobGenerator(e){
     $.getNode('#nameValue').value = '';
     // $.show('.pop');
     // $.addClass('.pop','active');
-    $.fadeIn('.pop');
+    // $.fadeIn('.pop');
+    animation.showPop().restart();
     randerText('.notice','5글자 이하의 이름을 넣어주세요.');
     return;
   }
@@ -92,9 +123,17 @@ function jujeobGenerator(e){
 $.getNode('.button').addEventListener('click',jujeobGenerator);
 $.getNode('.close').addEventListener('click',function(e){
 
+
+  animation.hidePop().restart();
+
   // $.hide('.pop');
   // $.removeClass('.pop','active');
-    $.fadeOut('.pop');
+    // $.fadeOut('.pop');
+
+
+    
+
+
   
 });
 

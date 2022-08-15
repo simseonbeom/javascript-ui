@@ -263,13 +263,20 @@ console.log(penalty(value));
 /* 다음 함수를 작성해봅니다. -------------------------------------------------- */
 
 
+/* 
 
 
+'use strict'
 
 
+const arrow = ()=>{
+  console.log(this);
+}
 
 
+arrow();
 
+ */
 
 
 
