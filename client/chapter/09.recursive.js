@@ -43,6 +43,11 @@ const factorial = (n) => (n === 1 ? n : n * factorial(n - 1));
 
 // factorial(10)
 
+// 0, 1, 2, 3
+// 0, 1, 1, 2, 3, 5, 8, ...
+
+fibonacci(-10)
+
 const fibonacci = (n) => {
   if (n <= 0) return 0;
   if (n <= 2) return 1;

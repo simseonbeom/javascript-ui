@@ -8,20 +8,17 @@
 // 이름을 입력하지 않았을 경우 예외처리
 // - 값이 없을 경우
 // - 빈칸이 있을 경우
-// - 숫자 입력 시 
+// - 숫자 입력 시
 
 // 팝업창을 띄워보자!
 
 // 1. 뭘 하는 함수인지 함수의 이름을 정한다 (동사) randerText
 // 2. 함수가 어떤 매개변수를 받을지 정한다.
-// randerText(node,text)  => 특정 node에 text 글자가 들어가길 
+// randerText(node,text)  => 특정 node에 text 글자가 들어가길
 // 3. 함수의 로직을 구현한다.
 // 4. 재사용 가능한 함수가 될 수 있는 방법을 생각한다.
 // 5. 함수를 리펙토링 한다.
 // 6. 함수가 실행됐을 때 원하는 기댓값이 나오는지 확인한다.
-
-
-
 
 function jujeobList(nickName) {
   return [
@@ -33,141 +30,82 @@ function jujeobList(nickName) {
   ];
 }
 
+/*  재사용의 문제  */
 function random(max = 6) {
   return Math.floor(Math.random() * max);
 }
 
-
-function getInputValue(node){
-  return $.getNode(node).value
+function getInputValue(node) {
+  // 인풋인지를 확인 하고 내보내기
+  return $.getNode(node).value;
 }
 
-
-function randerText(node,text){
+function randerText(node, text) {
+  //
   $.getNode(node).textContent = text;
 }
 
-
 const animation = Object.freeze({
+  showPop() {
+    const showPop = gsap.timeline({ paused: true });
+    showPop.to('.pop', { autoAlpha: 1 });
+    showPop.to('.frame', { scale: 1, opacity: 1, ease: 'bounce' });
 
-  showPop(){
-    const showPop = gsap.timeline({paused:true});
-    showPop.to('.pop',{autoAlpha:1})
-    showPop.to('.frame',{scale:1,opacity:1,ease:'bounce'})
-
-    return showPop
+    return showPop;
   },
-  hidePop(){
-    const hidePop = gsap.timeline({paused:true});
-    hidePop.to('.frame',{scale:0,opacity:0})
-    hidePop.to('.pop',{autoAlpha:0})
-    return hidePop
-  }
-  
-})
+  hidePop() {
+    const hidePop = gsap.timeline({ paused: true });
+    hidePop.to('.frame', { scale: 0, opacity: 0 });
+    hidePop.to('.pop', { autoAlpha: 0 });
+    return hidePop;
+  },
+});
 
 
 
 
-
-
-
-    
-
-
-
-function jujeobGenerator(e){
-
+function jujeobGenerator(e) {
   e.preventDefault();
 
-  
-
   let name = getInputValue('#nameValue').trim();
-  let jujeob = jujeobList(name)[random(jujeobList().length)]
+  let aa = jujeobList(name);
 
+  let jujeob = aa[random(aa.length)];
 
-
-  if(!name){
+  if (!name) {
     // alert('이름을 입력후 확인버튼을 눌러주세요.');
     // $.show('.pop');
     // $.addClass('.pop','active');
     // $.fadeIn('.pop');
 
     animation.showPop().restart();
-    
 
-    randerText('.notice','정확한 이름을 입력해 주세요.');
+    randerText('.notice', '정확한 이름을 입력해 주세요.');
     return;
   }
 
+  if($.inNumericString(name)){
+    console.log('숫자 입니다.');
+  }
 
-
-
-  if(name.length >= 5){
+  if (name.length >= 5) {
     $.getNode('#nameValue').value = '';
     // $.show('.pop');
     // $.addClass('.pop','active');
     // $.fadeIn('.pop');
     animation.showPop().restart();
-    randerText('.notice','5글자 이하의 이름을 넣어주세요.');
+    randerText('.notice', '5글자 이하의 이름을 넣어주세요.');
     return;
   }
 
-
-  randerText('.jujeobField',jujeob)
+  randerText('.jujeobField', jujeob);
 }
 
-
-
-
-$.getNode('.button').addEventListener('click',jujeobGenerator);
-$.getNode('.close').addEventListener('click',function(e){
-
-
+$.getNode('.button').addEventListener('click', jujeobGenerator);
+$.getNode('.close').addEventListener('click', function (e) {
   animation.hidePop().restart();
 
   // $.hide('.pop');
   // $.removeClass('.pop','active');
-    // $.fadeOut('.pop');
-
-
-    
-
-
-  
+  // $.fadeOut('.pop');
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

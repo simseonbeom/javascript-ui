@@ -59,7 +59,17 @@ const $ = Object.freeze({
       }
     }, duration);
   },
+
+  inNumericString(data){
+    data = Number(data);
+    if(!isNaN(data) && typeof data === 'number') {
+      return true;
+    }else{
+      return false;
+    }
+  }
 });
+
 
 // console.log($.fadeOut('h1'));
 
